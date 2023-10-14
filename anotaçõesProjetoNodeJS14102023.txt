@@ -184,9 +184,31 @@ import express from 'express';
 
 /// =============== Conectando ao banco =================================================
 
-npm i mysql => para intalar a biblioteca do sql;
+na pasta src criar o arquivo "mysql.ts" 
 
-npm i @types/mysql -D 
+depois de criado o arquivo "mysql.ts" executar o comando abaixo:
+
+### npm i mysql => para intalar a biblioteca do sql;
+
+### npm i @types/mysql -D =>
+
+com o mysql e a tipagem do mysql instalado, faremos a criação dessa conexão com o banco de dados 
+
+"mysql.ts"
+
+import mysql from 'mysql';
+
+const pool = mysql.createPool({
+    "user": "root",
+    "password":"1213275783",
+    "database":"api-yt-project",
+    "host":"localhost",
+    "port": 3306
+})
+
+export { pool };
+
+
 
 
 
