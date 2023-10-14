@@ -1,0 +1,216 @@
+// Verbos http
+
+// GET -> Ler ou extrair um valor
+// POST -> Enviar um valor
+// PUT -> alterar ou atualizar um valor
+// PATCH -> alterar um valor especifico
+// DELETE -> deletar um valor
+
+// HTTP codes
+
+// 1xx -> informativos
+// 2xx -> confirmação / sucesso
+// 3xx -> redirecionamento
+// 4xx -> erros no client
+// 5xx -> erro no servidor
+
+// id = 7483hdhs
+
+// Route Params
+
+// https://profissaoprogramador.com.br/7483hdhs
+
+// Query Params
+
+// https://profissaoprogramador.com.br/?name=paulo&age=22&city=curitiba
+
+
+// Body Params
+
+// Corpo da requisição
+
+// Header Params
+
+
+// ============== introdução parte 02 ========================
+
+
+// API -> Application programing interface (Interface de programação de aplicativos)
+
+// Rest quer dizer (Representation state transfer -> transferencia representacional de estado)
+
+// REST é composto por 6 regras
+
+// 1 - Client - servidor -> cada um deve ter responsabilidade a as responsabilidades deven ser únicas. então cada um tem o seu papel e não é preocupação de um o papel do outro.
+
+// 2 - stateless -> o servidor não armazena estado das resquisições.
+
+// 3 - cache -> a aplicação deve ter condições de uma implementação de cache (informação temporária)
+
+// 4 - interface uniforme
+    // - identificação de recursos
+    // - representação de recursos
+    // - mensagem descritivas
+    // - hateoas
+
+// 5 - aplicação dividida em camadas
+
+// 6 - código sob demanda
+
+// nodejs
+
+// v8 + Libuv + conjunto de módulos
+
+
+
+
+/// =============== Primeiro Projeto - Parte 1 ==========================================
+
+npm init -y => para criar o "package.json"
+
+npm i express => para criar a pasta "node_modules" e dependencia express
+
+
+=> criar no projeto uma pasta chamada "src" e dentro da pasta criar o arquivo "server.js"
+
+=> node .\src\server.js  => ´para rodar o nosso server*/
+
+
+/// =============== Primeiro Projeto - Parte 2 ==========================================
+
+// implementar o carregamento automático da nossa aplicação em desenvolvimento
+
+npm i nodemon -D => somente enquanto esta em desenvolvimento
+
+=> no arquivo "package.json" do projeto acrescemtar no scripts =>  "dev": "nodemon src/server.js" como no exemplo abaixo
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+
+  para rodar automenticamente executar o comando abaixo:
+
+  npm run dev  
+
+
+
+/// =============== Adicionando Types ==========================================
+
+
+typescript 
+
+Comando abaixo para converter typescript em JS
+
+npm i ts-node-dev -D
+
+=> no arquivo "package.json" do projeto acrescemtar no scripts =>  "dev": "ts-node-dev src/server.ts" como no exemplo abaixo
+
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "dev": "ts-node-dev src/server.ts"
+  },
+
+
+npm i @types/express -D
+
+
+/// =============== Instalando Banco de dados ==========================================
+
+* baixar o bando de dados MariaDB e instalar
+
+* baixar o programa MySQL Workbench e instalar
+
+
+
+
+/// =============== Conectando ao banco ==========================================
+
+npm i mysql => para intalar a biblioteca do sql;
+
+npm i @types/mysql -D 
+
+
+
+/// =============== Criando usuário =============================================
+
+
+npm i uuid => biblioteca para criar id unicos
+
+npm i @types/uuid -D
+
+
+/// =============== Criptografando senha =============================================
+
+
+npm i bcrypt => biblioteca para criptografia da senha
+
+import { hash } from 'bcrypt'; => no arquivo "server.ts"
+
+
+npm i @types/bcrypt -D
+
+
+/// =============== Autenticação =====================================================
+
+npm i jsonwebtoken => instalar package para token
+
+npm i @types/jsonwebtoken -D
+
+
+
+/// =============== Variáveis de ambiente ===================================================
+
+npm i dotenv
+
+-> criar o arquivo na raiz do projeto ".env" 
+
+-> no arquivo "server.ts" acrescentar o 
+
+import { config } from 'dotenv';
+
+
+/// =============== Gerando build ===================================================
+
+npm i typescript -D
+
+-> depois de instalado rodar o: 
+
+npx tsc --init => vai gerar um arquivo "tsconfig.json"
+
+
+=> no aqruivo "tsconfig.json" procurar ' // "outDir": "./", '
+
+
+e descomentar e acrestar conforme abaixo
+
+ "outDir": "./dist",   
+
+
+e executar o comando: 
+
+
+npx tsc
+
+vai gerar uma pasta no projeto chamada 'dist'
+
+
+
+=> no arquivo "package.json" acrescentar no script a linha build e start conforme abaixo
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev src/server.ts",
+    "build": "npx tsc",
+    "start": "node ./dist/server.js"
+  },
+
+
+npm run build  => para gerar a pasta "dist" novamente (esta pasta não se atualiza sozinha se alterar alguma coisa no projeto tem que gerar novamente) OBS: apagar a pasta "dist" antes de garar novamente.
+
+npm start => para estartar a aplicação
+
+
+
