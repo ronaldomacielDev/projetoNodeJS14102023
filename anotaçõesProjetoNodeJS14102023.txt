@@ -1,3 +1,11 @@
+
+MODULO 13
+NodeJS API escalável com e sem Express
+Profição Programador
+
+// ============== introdução parte 01 ===================================================
+
+
 // Verbos http
 
 // GET -> Ler ou extrair um valor
@@ -12,9 +20,9 @@
 // 2xx -> confirmação / sucesso
 // 3xx -> redirecionamento
 // 4xx -> erros no client
-// 5xx -> erro no servidor
+// 5xx -> erros no servidor
 
-// id = 7483hdhs
+// id = 7483hdhs 
 
 // Route Params
 
@@ -27,15 +35,18 @@
 
 // Body Params
 
-// Corpo da requisição
+// Corpo da requisição => na maioria das vezes para enviar dados do usuário, fazer login, fazer um cadastro nos vamos utilizar o corpo da requisição, ele não e enviado na rota.
 
-// Header Params
+// Header Params => vai servir para envio de informações adicionais.
 
 
-// ============== introdução parte 02 ========================
+// ============== introdução parte 02 ===================================================
 
 
 // API -> Application programing interface (Interface de programação de aplicativos)
+
+    APIs são mecanismos que permitem que dois componentes de software se comuniquem usando um conjunto de definições e protocolos. Por exemplo, o sistema de software do instituto meteorológico contém dados meteorológicos diários. A aplicação para a previsão do tempo em seu telefone “fala” com esse sistema por meio de APIs e mostra atualizações meteorológicas diárias no telefone.
+
 
 // Rest quer dizer (Representation state transfer -> transferencia representacional de estado)
 
@@ -59,28 +70,58 @@
 
 // nodejs
 
-// v8 + Libuv + conjunto de módulos
+// nodejs = é a junção da v8 + Libuv + conjunto de módulos
+
+// single thread e non blocking I/O
 
 
 
 
 /// =============== Primeiro Projeto - Parte 1 ==========================================
 
-npm init -y => para criar o "package.json"
+Comando: 
 
-npm i express => para criar a pasta "node_modules" e dependencia express
+### npm init -y 
+
+    => para criar o arquivo "package.json" que vai gerenciar as dependencia do nossos projetos pacotes externo  alem de outras coisas. O -y (é uma flag) para confirmar todas as perguntas que serão feitas, respondendo todas as perguntas automenticamente. 
 
 
-=> criar no projeto uma pasta chamada "src" e dentro da pasta criar o arquivo "server.js"
+### npm i express 
+    
+    => para criar a pasta "node_modules" e dependencia express.
 
-=> node .\src\server.js  => ´para rodar o nosso server*/
+
+    => criar no projeto uma pasta chamada "src" e dentro da pasta criar o arquivo "server.js"
+
+        * no arquivo "server.js" acrescentar o código conforme abaixo:
+
+        const express = require('express');
+        const app = express();
+
+        app.get('/', (request, response) => {
+            response.send('Você acessou o servidor');
+        })
+
+        app.listen(4000);
+
+
+### node .\src\server.js  => ´para rodar o nosso server*/
+
+* depois de executar o comando "node .\src\server.js" para testar se o servidor está rodando, abra o Google Chrome => na barra de url digite: 
+
+http://localhost:4000
+
+* deve aparecer a mensagem "Você acessou o servidor"
+
+*** OBS: cada vez que é alterado o arquivo "server.js" deve parar o servidor e executar o comando " node .\src\server.js " novamente.
 
 
 /// =============== Primeiro Projeto - Parte 2 ==========================================
 
-// implementar o carregamento automático da nossa aplicação em desenvolvimento
+// implementar o carregamento automático da nossa aplicação em desenvolvimente
+    (para não precisar ficar parando o servidor e executando novamente.)
 
-npm i nodemon -D => somente enquanto esta em desenvolvimento
+### npm i nodemon -D => somente enquanto esta em desenvolvimento
 
 => no arquivo "package.json" do projeto acrescemtar no scripts =>  "dev": "nodemon src/server.js" como no exemplo abaixo
 
@@ -95,29 +136,44 @@ npm i nodemon -D => somente enquanto esta em desenvolvimento
 
 
 
-/// =============== Adicionando Types ==========================================
+/// =============== Adicionando Types ===================================================
+
 
 
 typescript 
 
+* primeiro a ser feito e alterar a extensão do arquivo "server.js" para "server.ts" alterando a extensão de .js para .ts
+
 Comando abaixo para converter typescript em JS
 
-npm i ts-node-dev -D
+### npm i ts-node-dev -D
 
 => no arquivo "package.json" do projeto acrescemtar no scripts =>  "dev": "ts-node-dev src/server.ts" como no exemplo abaixo
 
 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "dev": "ts-node-dev src/server.ts"
   },
 
 
-npm i @types/express -D
+* no arquivo "server.ts" deletar a linha abaixo:
+
+const express = require('express');
+
+* e acrescentar a linha abaixo:
+
+import express from 'express';
 
 
-/// =============== Instalando Banco de dados ==========================================
+
+### npm i @types/express -D
+
+### npm run dev
+
+
+
+/// =============== Instalando Banco de dados ===========================================
 
 * baixar o bando de dados MariaDB e instalar
 
@@ -126,7 +182,7 @@ npm i @types/express -D
 
 
 
-/// =============== Conectando ao banco ==========================================
+/// =============== Conectando ao banco =================================================
 
 npm i mysql => para intalar a biblioteca do sql;
 
@@ -134,7 +190,7 @@ npm i @types/mysql -D
 
 
 
-/// =============== Criando usuário =============================================
+/// =============== Criando usuário =====================================================
 
 
 npm i uuid => biblioteca para criar id unicos
@@ -142,7 +198,7 @@ npm i uuid => biblioteca para criar id unicos
 npm i @types/uuid -D
 
 
-/// =============== Criptografando senha =============================================
+/// =============== Criptografando senha ================================================
 
 
 npm i bcrypt => biblioteca para criptografia da senha
@@ -153,7 +209,7 @@ import { hash } from 'bcrypt'; => no arquivo "server.ts"
 npm i @types/bcrypt -D
 
 
-/// =============== Autenticação =====================================================
+/// =============== Autenticação ========================================================
 
 npm i jsonwebtoken => instalar package para token
 
@@ -161,7 +217,7 @@ npm i @types/jsonwebtoken -D
 
 
 
-/// =============== Variáveis de ambiente ===================================================
+/// =============== Variáveis de ambiente ===============================================
 
 npm i dotenv
 
@@ -172,7 +228,7 @@ npm i dotenv
 import { config } from 'dotenv';
 
 
-/// =============== Gerando build ===================================================
+/// =============== Gerando build =======================================================
 
 npm i typescript -D
 
