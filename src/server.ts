@@ -1,32 +1,26 @@
 import express from 'express';
-const app = express();
+import { pool } from './mysql';
+import { v4 as uuidv4 } from 'uuid';
 
-// localhost:4000
+const app = express();
 
 app.use(express.json());
 
-app.get('/', (request, response) => {
-    response.send('Você acessou o servidor');
+app.post('/user', (request, response) => {
+    const { name, email, password } = request.body;
+    pool.getConnection((err: any, connection: any) => {
+        connection.query(
+            'INSERT INTO users ( user_id, name, email, password ) VALUES (?,?,?,?)',
+            [uuidv4(), name, email, password ],
+            (error: any, result: any, fileds: any ) => {
+                if (error) {
+                    return response.status(400).json(error)
+                }
+                response.status(200).json({ success: true});
+            }
+        )
+    })
 
 })
-
-app.get('/param', (request, response) => {
-    response.json({name: 'Ronaldo', age: 45});
-})
-
-app.get('/users', (request, response) => {
-    response.json([{name: 'Ronaldo', age: 45}, {name: 'Gui', age: 12}, {name: 'Enzo', age: 10}, 
-                   {name: 'Helena', age: 7}]);
-})
-
-app.post('/userData/:id', (request, response) => {
-    console.log(request.body)
-    console.log(request.params)
-    console.log(request.query)
-    console.log(request.headers)
-    response.status(200).json({ success: true})
-})
-
-
 
 app.listen(4000);
