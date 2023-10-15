@@ -268,7 +268,9 @@ npm i @types/bcrypt -D
 
 /// =============== Autenticação ========================================================
 
-npm i jsonwebtoken => instalar package para token
+// json web token => QUANDO o usuario recebe esse token de autenticação, podemos determinar um tempo de expiração do token, fazendo o usuario logar novamente caso esteja expirado
+
+npm i jsonwebtoken => instalar package para token => que serve para 
 
 npm i @types/jsonwebtoken -D
 
