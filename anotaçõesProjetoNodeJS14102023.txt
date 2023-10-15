@@ -283,6 +283,19 @@ npm i @types/jsonwebtoken -D
 * na pasta "routes" criar o arquivo "user.routes.ts"
 
 
+
+/// =============== Criando repository ==================================================
+
+* na pasta src criar a pasta "modules"
+
+** na pasta "modules" criar a pasta "user" e a pasta "videos"
+
+
+* na pasta "user" criar a pasta "repositories"
+
+** na pasta "repositories" criar o arquivo "UserRepository.ts"
+
+
 /// =============== Variáveis de ambiente ===============================================
 
 npm i dotenv
