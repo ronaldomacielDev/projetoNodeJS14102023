@@ -276,6 +276,13 @@ npm i @types/jsonwebtoken -D
 
 
 
+/// =============== Organizando rotas ===================================================
+
+* na pasta src criar a pasta "routes"
+
+* na pasta "routes" criar o arquivo "user.routes.ts"
+
+
 /// =============== Variáveis de ambiente ===============================================
 
 npm i dotenv
