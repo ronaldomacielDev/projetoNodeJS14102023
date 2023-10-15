@@ -19,6 +19,7 @@ app.post('/user', (request, response) => {
                 'INSERT INTO users ( user_id, name, email, password ) VALUES (?,?,?,?)',
                 [uuidv4(), name, email, hash ],
                 (error: any, result: any, fileds: any ) => {
+                    connection.release();
                     if (error) {
                         return response.status(400).json(error)
                     }
