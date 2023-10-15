@@ -260,8 +260,8 @@ no postman executar o post '/user'
 
 npm i bcrypt => biblioteca para criptografia da senha
 
-import { hash } from 'bcrypt'; => no arquivo "server.ts"
 
+import { hash } from 'bcrypt'; => no arquivo "server.ts"
 
 npm i @types/bcrypt -D
 
