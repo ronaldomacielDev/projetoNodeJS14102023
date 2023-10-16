@@ -40,6 +40,25 @@ class VideoRepository {
             )
         })
     }
+
+
+    searchVideos(request: Request, response: Response){
+        const { search } = request.query;
+        pool.getConnection((err: any, connection: any) => {
+            connection.query(
+                'SELECT * FROM videos WHERE title LIKE ?',
+                [`%${search}%`],
+                (error: any, results: any, fileds: any ) => {
+                    connection.release(); // para encerrar a conexão com o BD
+                    if (error) {
+                        return response.status(400).json({error: "Erro ao buscar os vídeos!"})
+                    }
+                    return response.status(200).json({message: 'Vídeos retornados com sucesso!', videos: results})
+                }
+            )
+        })
+    }
+
 }
 
 export { VideoRepository }

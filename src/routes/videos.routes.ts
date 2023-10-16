@@ -14,4 +14,9 @@ videosRoutes.get('/get-videos', (request, response) => {
     videoRepository.getVideos(request, response);
 })
 
+// ***** ROTA DE PESQUISAR VIDEO DO USUARIO ***** 
+videosRoutes.get('/search', (request, response) => {
+    videoRepository.searchVideos(request, response);
+})
+
 export { videosRoutes };
