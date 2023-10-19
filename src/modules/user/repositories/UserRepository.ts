@@ -52,7 +52,7 @@ class UserRepository {
                             const token = sign({
                                 id: results[0].user_id, 
                                 email: results[0].email
-                            }, "segredo", {expiresIn: "1d"})
+                            }, process.env.SECRET as string, {expiresIn: "1d"})
                             
                             return response.status(200).json({token: token, message: 'Autenticado com sucesso!'})
                         }

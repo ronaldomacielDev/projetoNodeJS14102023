@@ -302,6 +302,10 @@ npm i dotenv
 
 -> criar o arquivo na raiz do projeto ".env" 
 
+
+
+
+
 -> no arquivo "server.ts" acrescentar o 
 
 import { config } from 'dotenv';
@@ -343,7 +347,7 @@ vai gerar uma pasta no projeto chamada 'dist'
   },
 
 
-npm run build  => para gerar a pasta "dist" novamente (esta pasta não se atualiza sozinha se alterar alguma coisa no projeto tem que gerar novamente) OBS: apagar a pasta "dist" antes de garar novamente.
+npm run build  => para gerar a pasta "dist" novamente (esta pasta não se atualiza sozinha se alterar alguma coisa no projeto tem que gerar novamente) OBS: apagar a pasta "dist" antes de gerar novamente.
 
 npm start => para estartar a aplicação
 
